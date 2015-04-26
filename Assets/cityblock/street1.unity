@@ -1746,6 +1746,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294959103
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabParent: 0
@@ -6409,6 +6413,66 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1281017205}
   m_Mesh: {fileID: 4300006, guid: eeb3632666b6c6145bcd5e7310c6b477, type: 3}
+--- !u!1 &1298907841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1298907842}
+  - 20: {fileID: 1298907846}
+  m_Layer: 0
+  m_Name: GunCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1298907842
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1298907841}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 499350637}
+  m_RootOrder: 1
+--- !u!20 &1298907846
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1298907841}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: .300000012
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: .0219999999
 --- !u!1 &1316589099
 GameObject:
   m_ObjectHideFlags: 0
@@ -6535,6 +6599,18 @@ Prefab:
     - target: {fileID: 400004, guid: 7fafe0af79ec5462289a87f9a4bbf052, type: 2}
       propertyPath: m_LocalScale.z
       value: .225792468
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 7fafe0af79ec5462289a87f9a4bbf052, type: 2}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 7fafe0af79ec5462289a87f9a4bbf052, type: 2}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7fafe0af79ec5462289a87f9a4bbf052, type: 2}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7fafe0af79ec5462289a87f9a4bbf052, type: 2}
@@ -8307,8 +8383,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae8cdf4490552742b06f0dfd488ceb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunAnim: {fileID: 1646521524}
   bulletPrefab: {fileID: 100000, guid: 2a8b3046d74a1de4d886809b5f34db9f, type: 2}
-  gunSpeed: .200000003
+  gunSpeed: .0500000007
+--- !u!95 &1646521524
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1646521521}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ac487a0c988d84345bd28d1ca5932e40, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1661471363
 GameObject:
   m_ObjectHideFlags: 0
@@ -10197,7 +10291,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1932059274}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10950,7 +11044,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 6
   m_Type: 1
-  m_Color: {r: .860294104, g: 1, b: .988438129, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: .449999988
   m_Range: 10
   m_SpotAngle: 30
