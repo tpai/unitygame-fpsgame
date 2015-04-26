@@ -3,6 +3,7 @@ using System.Collections;
 
 public class GunShooting : MonoBehaviour {
 
+	public Animator envAnim;
 	public Animator gunAnim;
 	public GameObject bulletPrefab;
 	public float gunSpeed = .2f;
@@ -15,9 +16,11 @@ public class GunShooting : MonoBehaviour {
 		}
 
 		if (Input.GetMouseButtonDown (1)) {
+			envAnim.SetBool("aim", true);
 			gunAnim.SetBool("aim", true);
 		}
 		if (Input.GetMouseButtonUp (1)) {
+			envAnim.SetBool("aim", false);
 			gunAnim.SetBool("aim", false);
 		}
 	}
