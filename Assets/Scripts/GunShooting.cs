@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class GunShooting : MonoBehaviour {
 
+	public FirstPersonController fpsCtrler;
 	public Animator envAnim;
 	public Animator gunAnim;
 	public GameObject bulletPrefab;
@@ -10,18 +12,29 @@ public class GunShooting : MonoBehaviour {
 	bool holdShoot = false;
 
 	void Update () {
-		if (Input.GetMouseButton (0)) {
-			if (holdShoot == false)
-				StartCoroutine("ShootBullet");
-		}
 
-		if (Input.GetMouseButtonDown (1)) {
-			envAnim.SetBool("aim", true);
-			gunAnim.SetBool("aim", true);
+		if (Input.GetKey (KeyCode.LeftShift)) {
+			fpsCtrler.WalkSpeed = 10;
+			gunAnim.SetBool("sprint", true);
 		}
-		if (Input.GetMouseButtonUp (1)) {
-			envAnim.SetBool("aim", false);
-			gunAnim.SetBool("aim", false);
+		else {
+			fpsCtrler.WalkSpeed = 5;
+			gunAnim.SetBool("sprint", false);
+
+			if (Input.GetMouseButton (0)) {
+				if (holdShoot == false)
+					StartCoroutine("ShootBullet");
+			}
+
+			if (Input.GetMouseButtonDown (1)) {
+				envAnim.SetBool("aim", true);
+				gunAnim.SetBool("aim", true);
+			}
+
+			if (Input.GetMouseButtonUp (1)) {
+				envAnim.SetBool("aim", false);
+				gunAnim.SetBool("aim", false);
+			}
 		}
 	}
 

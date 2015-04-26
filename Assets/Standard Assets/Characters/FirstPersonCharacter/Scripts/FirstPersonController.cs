@@ -12,6 +12,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
     {
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
+		public float WalkSpeed {
+			get {
+				return m_WalkSpeed;
+			}
+			set {
+				m_WalkSpeed = value;
+			}
+		}
         [SerializeField] private float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
         [SerializeField] private float m_JumpSpeed;
