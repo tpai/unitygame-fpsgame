@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 488908}
   - 114: {fileID: 11479752}
+  - 82: {fileID: 8253080}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -275,6 +276,7 @@ GameObject:
   - 23: {fileID: 2307492}
   - 64: {fileID: 6486756}
   - 114: {fileID: 11461154}
+  - 65: {fileID: 6509578}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Enemy
@@ -645,7 +647,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.2130003, y: .838999987, z: 40.6870003}
+  m_LocalPosition: {x: -8.0010004, y: .838999987, z: 40.6870003}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children:
   - {fileID: 402066}
@@ -1995,6 +1997,87 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300564, guid: 908420fe2d3222c4790e6ebffe4db7db, type: 3}
+--- !u!65 &6509578
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.41303635, y: 5.94795132, z: 5.27914715}
+  m_Center: {x: -2.98023224e-06, y: -1.39527559, z: -.000521302223}
+--- !u!82 &8253080
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129736}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 87c33b7b9cf7efe499170d636bf70d63, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11461154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2017,6 +2100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8448efb5053c172479dd40cb7f7fe967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionForce: 300
+  disappearDuration: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

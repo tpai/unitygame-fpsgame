@@ -16,6 +16,7 @@ public class GunShooting : MonoBehaviour {
 		if (Input.GetKey (KeyCode.LeftShift)) {
 			fpsCtrler.WalkSpeed = 10;
 			gunAnim.SetBool("sprint", true);
+			gunAnim.SetBool("aim", false);
 		}
 		else {
 			fpsCtrler.WalkSpeed = 5;
