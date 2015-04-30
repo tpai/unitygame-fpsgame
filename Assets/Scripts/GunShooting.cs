@@ -46,6 +46,7 @@ public class GunShooting : MonoBehaviour {
 
 	IEnumerator ShootBullet () {
 		holdShoot = true;
+		gunAnim.SetTrigger("shoot");
 		Instantiate(bulletPrefab, transform.Find ("Top").position, transform.Find ("Top").rotation);
 		yield return new WaitForSeconds (gunSpeed);
 		holdShoot = false;
