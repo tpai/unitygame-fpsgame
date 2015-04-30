@@ -21,6 +21,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			}
 		}
         [SerializeField] private float m_RunSpeed;
+		public float RunSpeed {
+			get {
+				return m_RunSpeed;
+			}
+			set {
+				m_RunSpeed = value;
+			}
+		}
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
@@ -221,7 +229,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
 #endif
             // set the desired speed to be walking or running
-            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+//            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+
+			if (m_IsWalking) {
+				speed = m_WalkSpeed;
+			}
+			else {
+				if (vertical > 0f || horizontal != 0f) {
+					speed = m_RunSpeed;
+				}
+				else {
+					speed = m_WalkSpeed;
+				}
+			}
             m_Input = new Vector2(horizontal, vertical);
 
             // normalize input if it exceeds 1 in combined length:

@@ -10,32 +10,37 @@ public class GunShooting : MonoBehaviour {
 	public GameObject bulletPrefab;
 	public float gunSpeed = .2f;
 	bool holdShoot = false;
+	bool isAiming = false;
 
 	void Update () {
 
-		if (Input.GetKey (KeyCode.LeftShift)) {
-			fpsCtrler.WalkSpeed = 10;
-			gunAnim.SetBool("sprint", true);
+		if (Input.GetMouseButtonDown (1)) {
+			isAiming = true;
+			fpsCtrler.RunSpeed = 5f;
+			envAnim.SetBool("aim", true);
+			gunAnim.SetBool("aim", true);
+		}
+		if (Input.GetMouseButtonUp (1)) {
+			fpsCtrler.RunSpeed = 10f;
+			isAiming = false;
+			envAnim.SetBool("aim", false);
 			gunAnim.SetBool("aim", false);
 		}
+
+		if (!isAiming && Input.GetKey (KeyCode.LeftShift)) {
+			if (Input.GetAxis ("Vertical") < 0f);
+			else {
+				gunAnim.SetBool("sprint", true);
+				if (isAiming)
+					gunAnim.SetBool("aim", false);
+			}
+		}
 		else {
-			fpsCtrler.WalkSpeed = 5;
 			gunAnim.SetBool("sprint", false);
 
-			if (Input.GetMouseButton (0)) {
+			if (Input.GetMouseButton (0))
 				if (holdShoot == false)
 					StartCoroutine("ShootBullet");
-			}
-
-			if (Input.GetMouseButtonDown (1)) {
-				envAnim.SetBool("aim", true);
-				gunAnim.SetBool("aim", true);
-			}
-
-			if (Input.GetMouseButtonUp (1)) {
-				envAnim.SetBool("aim", false);
-				gunAnim.SetBool("aim", false);
-			}
 		}
 	}
 
