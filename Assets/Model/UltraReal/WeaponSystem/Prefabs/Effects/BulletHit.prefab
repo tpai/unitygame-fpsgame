@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 489852}
   - 198: {fileID: 19882868}
   - 199: {fileID: 19944970}
-  - 114: {fileID: 11470380}
   m_Layer: 0
   m_Name: Flash
   m_TagString: Untagged
@@ -117,7 +116,7 @@ Transform:
   m_GameObject: {fileID: 198248}
   m_LocalRotation: {x: 1, y: 1.62920685e-07, z: 1.62920685e-07, w: 2.65431496e-14}
   m_LocalPosition: {x: -0, y: 0, z: .023}
-  m_LocalScale: {x: .101994865, y: .101994865, z: .101994865}
+  m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 420682}
   m_RootOrder: 2
@@ -169,18 +168,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11470380
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 122822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f45e8bdd6b407cf41aa99d8a2b085e7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _destroyDelay: .200000003
 --- !u!198 &19848312
 ParticleSystem:
   m_ObjectHideFlags: 1

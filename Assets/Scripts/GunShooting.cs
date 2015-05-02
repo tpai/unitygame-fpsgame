@@ -8,7 +8,7 @@ public class GunShooting : MonoBehaviour {
 	public FirstPersonController fpsCtrler;
 	public Animator envAnim;
 	public Animator gunAnim;
-	public GameObject bulletPrefab;
+	public Transform gunTop;
 	public float gunSpeed = .2f;
 	bool holdShoot = false;
 	bool isAiming = false;
@@ -60,7 +60,7 @@ public class GunShooting : MonoBehaviour {
 	IEnumerator ShootBullet () {
 		holdShoot = true;
 		gunAnim.SetTrigger("shoot");
-		Instantiate(bulletPrefab, transform.Find ("Top").position, transform.Find ("Top").rotation);
+		gunTop.SendMessage ("BulletHit");
 		yield return new WaitForSeconds (gunSpeed);
 		holdShoot = false;
 	}
