@@ -22,12 +22,13 @@ public class BulletFlying : MonoBehaviour {
 	void BulletHit () {
 		RaycastHit hit = new RaycastHit();
 		Ray ray = new Ray (transform.position, transform.forward);
-		if (hitPrefab != null && Physics.Raycast (ray, out hit, _fireDistance)){
-			if (bulletCount > 0) {
-				bulletCount --;
-				Instantiate (muzzleFlash, transform.position, transform.rotation);
+		if (bulletCount > 0) {
+			bulletCount --;
+			Instantiate (muzzleFlash, transform.position, transform.rotation);
 
-				if (hit.collider.tag == "Wall") {
+			if (hitPrefab != null && Physics.Raycast (ray, out hit, _fireDistance)){
+
+				if (hit.collider.tag == "Wall" || hit.collider.tag == "Ground") {
 					GameObject obj = (GameObject)Instantiate(hitPrefab, hit.point, Quaternion.FromToRotation (Vector3.forward, hit.normal));
 					StartCoroutine ( DestroyBulletHole( obj ) );
 				}
@@ -35,12 +36,12 @@ public class BulletFlying : MonoBehaviour {
 				if (hit.collider.tag == "Enemy")
 					if (hit.collider.name.Contains ("Barrel"))
 						hit.collider.transform.parent.SendMessage ("Broken", hit.point, SendMessageOptions.DontRequireReceiver);
+			}
 
-				SoundPlay (bulletSound [Random.Range(0, bulletSound.Length)]);
-			}
-			else {
-				SoundPlay (noAmmoSound);
-			}
+			SoundPlay (bulletSound [Random.Range(0, bulletSound.Length)]);
+		}
+		else {
+			SoundPlay (noAmmoSound);
 		}
 	}
 
