@@ -12,6 +12,7 @@ public class GunShooting : MonoBehaviour {
 	public float gunSpeed = .2f;
 	bool holdShoot = false;
 	bool isAiming = false;
+	bool isReloading = false;
 
 	void Update () {
 
@@ -33,6 +34,13 @@ public class GunShooting : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.LeftControl)) {
 			chrCtrler.height = 1.8f;
 			envAnim.SetBool("crouch", false);
+		}
+
+		if (!isReloading && Input.GetKeyDown (KeyCode.R)) {
+			isReloading = true;
+			envAnim.SetBool("aim", false);
+			gunAnim.SetTrigger ("reload");
+			gunTop.SendMessage("PlayReloadSound");
 		}
 
 		if (!isAiming && !Input.GetKey (KeyCode.LeftControl) && Input.GetKey (KeyCode.LeftShift)) {
@@ -59,9 +67,15 @@ public class GunShooting : MonoBehaviour {
 
 	IEnumerator ShootBullet () {
 		holdShoot = true;
-		gunAnim.SetTrigger("shoot");
 		gunTop.SendMessage ("BulletHit");
+		if (gunTop.GetComponent<BulletFlying>().BulletCount > 0)
+			gunAnim.SetTrigger("shoot");
 		yield return new WaitForSeconds (gunSpeed);
 		holdShoot = false;
+	}
+
+	public void ClipReloaded () {
+		isReloading = false;
+		gunTop.SendMessage ("ClipReload", 30);
 	}
 }

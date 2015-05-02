@@ -275,8 +275,6 @@ GameObject:
   - 33: {fileID: 3348918}
   - 23: {fileID: 2307492}
   - 64: {fileID: 6486756}
-  - 114: {fileID: 11461154}
-  - 65: {fileID: 6509578}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Enemy
@@ -647,7 +645,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.0010004, y: .838999987, z: 40.6870003}
+  m_LocalPosition: {x: -10.2130003, y: .838999987, z: 40.6870003}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children:
   - {fileID: 402066}
@@ -1997,18 +1995,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300564, guid: 908420fe2d3222c4790e6ebffe4db7db, type: 3}
---- !u!65 &6509578
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176634}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.41303635, y: 5.94795132, z: 5.27914715}
-  m_Center: {x: -2.98023224e-06, y: -1.39527559, z: -.000521302223}
 --- !u!82 &8253080
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2078,17 +2064,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!114 &11461154
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f148d86ec6af00e42ac4b0419deff15e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11479752
 MonoBehaviour:
   m_ObjectHideFlags: 1
