@@ -2075,7 +2075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8448efb5053c172479dd40cb7f7fe967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionForce: 300
+  explosionForce: 400
   disappearDuration: 3
 --- !u!1001 &100100000
 Prefab:

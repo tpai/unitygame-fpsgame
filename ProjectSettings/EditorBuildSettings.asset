@@ -5,9 +5,5 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Level.unity
   - enabled: 1
-    path: Assets/Weapon Make Kit/SampleScene/3DSampleScene.unity
-  - enabled: 0
-    path: Assets/Weapon Make Kit/SampleScene/2DSampleScene.unity
+    path: Assets/Model/cityblock/street1.unity

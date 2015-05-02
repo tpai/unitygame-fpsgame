@@ -1870,54 +1870,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 22316664, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22316664, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1298907846}
-    - target: {fileID: 189696, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 165166, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 190398, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 22316664, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
-      propertyPath: m_PlaneDistance
-      value: 1
+    - target: {fileID: 11465878, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
+      propertyPath: m_ReferenceResolution.x
+      value: 1600
       objectReference: {fileID: 0}
     - target: {fileID: 11465878, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
-      propertyPath: m_UiScaleMode
-      value: 1
+      propertyPath: m_ReferenceResolution.y
+      value: 900
       objectReference: {fileID: 0}
-    - target: {fileID: 22406526, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 11493716, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
-      propertyPath: m_FontData.m_Alignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 22406526, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -55
-      objectReference: {fileID: 0}
-    - target: {fileID: 11493716, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 43
-      objectReference: {fileID: 0}
-    - target: {fileID: 11457416, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
-      propertyPath: muzzleFlash
-      value: 
-      objectReference: {fileID: 197126, guid: b8c4aa7ee3d5b0f4e8386701166f62e2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8540cd8f00ee0864f8957bbc41418493, type: 2}
   m_IsPrefabParent: 0
@@ -6623,11 +6583,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1281017205}
   m_Mesh: {fileID: 4300006, guid: eeb3632666b6c6145bcd5e7310c6b477, type: 3}
---- !u!20 &1298907846 stripped
-Camera:
-  m_PrefabParentObject: {fileID: 2031200, guid: 8540cd8f00ee0864f8957bbc41418493,
-    type: 2}
-  m_PrefabInternal: {fileID: 376560144}
 --- !u!1 &1316589099
 GameObject:
   m_ObjectHideFlags: 0

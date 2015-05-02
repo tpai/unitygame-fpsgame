@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - TurretUpper
   - Mirror2
+  - Ground
+  - Bullet
   layers:
   - Default
   - TransparentFX

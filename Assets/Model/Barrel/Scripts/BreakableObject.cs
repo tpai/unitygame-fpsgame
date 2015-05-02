@@ -16,7 +16,7 @@ public class BreakableObject : MonoBehaviour {
 			transform.GetChild(i).gameObject.GetComponent<Rigidbody>().useGravity = true;
 			transform.GetChild(i).gameObject.GetComponent<MeshCollider>().enabled = true;
 //			transform.GetChild(i).gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, point, 100f);
-			transform.GetChild(i).gameObject.GetComponent<Rigidbody>().AddForce ((transform.position - point) * 300f);
+			transform.GetChild(i).gameObject.GetComponent<Rigidbody>().AddForce ((transform.position - point) * explosionForce);
 		}
 
 		Invoke ("DestroyFragments", disappearDuration);
