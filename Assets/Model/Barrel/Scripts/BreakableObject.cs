@@ -10,11 +10,13 @@ public class BreakableObject : MonoBehaviour {
 
 		GetComponent<AudioSource> ().Play ();
 		transform.Find ("Barrel").GetComponent<MeshRenderer> ().enabled = false;
+		transform.Find ("Barrel").GetComponent<MeshCollider> ().enabled = false;
 
 		for (int i=1;i<transform.childCount;i++) {
 			transform.GetChild(i).gameObject.GetComponent<Rigidbody>().useGravity = true;
 			transform.GetChild(i).gameObject.GetComponent<MeshCollider>().enabled = true;
-			transform.GetChild(i).gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, point, 100f);
+//			transform.GetChild(i).gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, point, 100f);
+			transform.GetChild(i).gameObject.GetComponent<Rigidbody>().AddForce ((transform.position - point) * 300f);
 		}
 
 		Invoke ("DestroyFragments", disappearDuration);
