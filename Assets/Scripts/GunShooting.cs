@@ -62,8 +62,6 @@ public class GunShooting : MonoBehaviour {
 					isSprinting = true;
 					fpsCtrler.RunSpeed = 10f;
 					gunAnim.SetBool("sprint", true);
-					if (isAiming)
-						gunAnim.SetBool("aim", false);
 				}
 			}
 		}
