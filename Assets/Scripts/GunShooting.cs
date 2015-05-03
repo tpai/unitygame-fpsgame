@@ -12,11 +12,13 @@ public class GunShooting : MonoBehaviour {
 	public float gunSpeed = .2f;
 	bool holdShoot = false;
 	bool isAiming = false;
+	bool isCrounching = false;
+	bool isSprinting = false;
 	bool isReloading = false;
 
 	void Update () {
 
-		if (Input.GetMouseButtonDown (1)) {
+		if (!isSprinting && Input.GetMouseButtonDown (1)) {
 			isAiming = true;
 			envAnim.SetBool("aim", true);
 			gunAnim.SetBool("aim", true);
@@ -28,10 +30,12 @@ public class GunShooting : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.LeftControl)) {
+			isCrounching = true;
 			chrCtrler.height = .9f;
 			envAnim.SetBool("crouch", true);
 		}
 		if (Input.GetKeyUp (KeyCode.LeftControl)) {
+			isCrounching = false;
 			chrCtrler.height = 1.8f;
 			envAnim.SetBool("crouch", false);
 		}
@@ -43,12 +47,14 @@ public class GunShooting : MonoBehaviour {
 			gunTop.SendMessage("PlayReloadSound");
 		}
 
-		if (!isAiming && !Input.GetKey (KeyCode.LeftControl) && Input.GetKey (KeyCode.LeftShift)) {
+		if (!isAiming && !isCrounching && Input.GetKey (KeyCode.LeftShift)) {
 			if (Input.GetAxis ("Vertical") <= 0f && Input.GetAxis ("Horizontal") == 0f) {
+				isSprinting = false;
 				fpsCtrler.RunSpeed = 5f;
 				gunAnim.SetBool("sprint", false);
 			}
 			else {
+				isSprinting = true;
 				fpsCtrler.RunSpeed = 10f;
 				gunAnim.SetBool("sprint", true);
 				if (isAiming)
@@ -56,13 +62,14 @@ public class GunShooting : MonoBehaviour {
 			}
 		}
 		else {
+			isSprinting = false;
 			fpsCtrler.RunSpeed = 5f;
 			gunAnim.SetBool("sprint", false);
-
-			if (Input.GetMouseButton (0))
-				if (holdShoot == false)
-					StartCoroutine("ShootBullet");
 		}
+		
+		if (!isSprinting && !isReloading && Input.GetMouseButton (0))
+			if (holdShoot == false)
+				StartCoroutine("ShootBullet");
 	}
 
 	IEnumerator ShootBullet () {
