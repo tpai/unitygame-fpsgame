@@ -24,13 +24,14 @@ public class BulletFlying : MonoBehaviour {
 		Ray ray = new Ray (transform.position, transform.forward);
 		if (bulletCount > 0) {
 			bulletCount --;
-			Instantiate (muzzleFlash, transform.position, transform.rotation);
-
+			GameObject muzObj = (GameObject)Instantiate (muzzleFlash, transform.position, transform.rotation);
+			StartCoroutine ( DestroyBulletHole(muzObj, 2f) );
+			
 			if (hitPrefab != null && Physics.Raycast (ray, out hit, _fireDistance)){
 
 				if (hit.collider.tag == "Wall" || hit.collider.tag == "Ground") {
-					GameObject obj = (GameObject)Instantiate(hitPrefab, hit.point, Quaternion.FromToRotation (Vector3.forward, hit.normal));
-					StartCoroutine ( DestroyBulletHole( obj ) );
+					GameObject hitObj = (GameObject)Instantiate(hitPrefab, hit.point, Quaternion.FromToRotation (Vector3.forward, hit.normal));
+					StartCoroutine ( DestroyBulletHole(hitObj, 2f) );
 				}
 
 				if (hit.collider.tag == "Enemy")
@@ -45,8 +46,8 @@ public class BulletFlying : MonoBehaviour {
 		}
 	}
 
-	IEnumerator DestroyBulletHole (GameObject obj) {
-		yield return new WaitForSeconds (2f);
+	IEnumerator DestroyBulletHole (GameObject obj, float duration) {
+		yield return new WaitForSeconds (duration);
 		Destroy (obj);
 	}
 
