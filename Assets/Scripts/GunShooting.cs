@@ -48,7 +48,12 @@ public class GunShooting : MonoBehaviour {
 		}
 
 		if (!isAiming && !isCrounching && Input.GetKey (KeyCode.LeftShift)) {
-			if (Input.GetAxis ("Vertical") <= 0f && Input.GetAxis ("Horizontal") == 0f) {
+			if (
+				Input.GetAxis ("Vertical") < 0f ||
+				(
+					Input.GetAxis ("Horizontal") == 0f && Input.GetAxis ("Vertical") == 0f
+				)
+			) {
 				isSprinting = false;
 				fpsCtrler.RunSpeed = 5f;
 				gunAnim.SetBool("sprint", false);
