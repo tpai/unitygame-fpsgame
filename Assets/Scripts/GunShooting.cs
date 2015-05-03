@@ -54,11 +54,17 @@ public class GunShooting : MonoBehaviour {
 				gunAnim.SetBool("sprint", false);
 			}
 			else {
-				isSprinting = true;
-				fpsCtrler.RunSpeed = 10f;
-				gunAnim.SetBool("sprint", true);
-				if (isAiming)
-					gunAnim.SetBool("aim", false);
+				if (!chrCtrler.isGrounded) {
+					isSprinting = false;
+					gunAnim.SetBool("sprint", false);
+				}
+				else {
+					isSprinting = true;
+					fpsCtrler.RunSpeed = 10f;
+					gunAnim.SetBool("sprint", true);
+					if (isAiming)
+						gunAnim.SetBool("aim", false);
+				}
 			}
 		}
 		else {
