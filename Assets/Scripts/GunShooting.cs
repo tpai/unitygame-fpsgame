@@ -30,14 +30,9 @@ public class GunShooting : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.LeftControl)) {
-			isCrounching = true;
-			chrCtrler.height = .9f;
-			envAnim.SetBool("crouch", true);
-		}
-		if (Input.GetKeyUp (KeyCode.LeftControl)) {
-			isCrounching = false;
-			chrCtrler.height = 1.8f;
-			envAnim.SetBool("crouch", false);
+			isCrounching = !isCrounching;
+			envAnim.SetBool("crouch", isCrounching);
+			chrCtrler.height = (isCrounching)?.6f:1.8f;
 		}
 
 		if (!isReloading && Input.GetKeyDown (KeyCode.R)) {
