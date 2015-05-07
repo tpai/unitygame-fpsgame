@@ -4,12 +4,14 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class GunShooting : MonoBehaviour {
 
-	public CharacterController chrCtrler;
-	public FirstPersonController fpsCtrler;
-	public Animator envAnim;
-	public Animator gunAnim;
-	public Transform gunTop;
+	public bool combatWeapon = false;
+	[SerializeField] private CharacterController chrCtrler;
+	[SerializeField] private FirstPersonController fpsCtrler;
+	[SerializeField] private Animator envAnim;
+	[SerializeField] private Animator gunAnim;
+	[SerializeField] private Transform gunTop;
 	public float gunSpeed = .2f;
+
 	bool holdShoot = false;
 	bool isAiming = false;
 	bool isCrounching = false;
@@ -20,12 +22,14 @@ public class GunShooting : MonoBehaviour {
 
 		if (!isSprinting && Input.GetMouseButtonDown (1)) {
 			isAiming = true;
-			envAnim.SetBool("aim", true);
+			if (!combatWeapon)
+				envAnim.SetBool("aim", true);
 			gunAnim.SetBool("aim", true);
 		}
 		if (Input.GetMouseButtonUp (1)) {
 			isAiming = false;
-			envAnim.SetBool("aim", false);
+			if (!combatWeapon)
+				envAnim.SetBool("aim", false);
 			gunAnim.SetBool("aim", false);
 		}
 
@@ -35,7 +39,7 @@ public class GunShooting : MonoBehaviour {
 			chrCtrler.height = (isCrounching)?.6f:1.8f;
 		}
 
-		if (!isReloading && Input.GetKeyDown (KeyCode.R)) {
+		if (!isReloading && !combatWeapon && Input.GetKeyDown (KeyCode.R)) {
 			isReloading = true;
 			envAnim.SetBool("aim", false);
 			gunAnim.SetTrigger ("reload");
@@ -78,11 +82,18 @@ public class GunShooting : MonoBehaviour {
 
 	IEnumerator ShootBullet () {
 		holdShoot = true;
-		if (gunTop.GetComponent<BulletFlying>().BulletCount > 0)
-			gunAnim.SetTrigger("shoot");
-		gunTop.SendMessage ("BulletHit");
+		if (gunTop.GetComponent<BulletFlying> ().BulletCount > 0) {
+			gunAnim.SetTrigger ("shoot");
+		}
+		if (!combatWeapon) {
+			gunTop.SendMessage ("BulletHit");
+		}
 		yield return new WaitForSeconds (gunSpeed);
 		holdShoot = false;
+	}
+
+	public void CombatWeaponHit () {
+		gunTop.SendMessage ("BulletHit");
 	}
 
 	public void ClipReloaded () {

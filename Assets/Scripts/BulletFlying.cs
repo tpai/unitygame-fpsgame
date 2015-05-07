@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BulletFlying : MonoBehaviour {
 
+	public bool combatWeapon = false;
 	[SerializeField] private GameObject hitPrefab;
 	[SerializeField] private GameObject muzzleFlash;
 	[SerializeField] private AudioSource audioSource;
@@ -23,9 +24,11 @@ public class BulletFlying : MonoBehaviour {
 		RaycastHit hit = new RaycastHit();
 		Ray ray = new Ray (transform.position, transform.forward);
 		if (bulletCount > 0) {
-			bulletCount --;
-			GameObject muzObj = (GameObject)Instantiate (muzzleFlash, transform.position, transform.rotation);
-			StartCoroutine ( DestroyBulletHole(muzObj, 2f) );
+			if (!combatWeapon) {
+				bulletCount --;
+				GameObject muzObj = (GameObject)Instantiate (muzzleFlash, transform.position, transform.rotation);
+				StartCoroutine ( DestroyBulletHole(muzObj, 2f) );
+			}
 			
 			if (hitPrefab != null && Physics.Raycast (ray, out hit, _fireDistance)){
 
