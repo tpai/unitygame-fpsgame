@@ -78,9 +78,9 @@ public class GunShooting : MonoBehaviour {
 
 	IEnumerator ShootBullet () {
 		holdShoot = true;
-		gunTop.SendMessage ("BulletHit");
 		if (gunTop.GetComponent<BulletFlying>().BulletCount > 0)
 			gunAnim.SetTrigger("shoot");
+		gunTop.SendMessage ("BulletHit");
 		yield return new WaitForSeconds (gunSpeed);
 		holdShoot = false;
 	}
