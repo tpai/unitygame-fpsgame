@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae8cdf4490552742b06f0dfd488ceb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatWeapon: 0
   chrCtrler: {fileID: 0}
   fpsCtrler: {fileID: 0}
   envAnim: {fileID: 0}
@@ -295,6 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca28de4d07922264abd2e5fa6e6835f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatWeapon: 0
   hitPrefab: {fileID: 182464, guid: 85544c5e10704d54abcc10fa32577cd2, type: 2}
   muzzleFlash: {fileID: 197126, guid: b8c4aa7ee3d5b0f4e8386701166f62e2, type: 2}
   audioSource: {fileID: 8270444}

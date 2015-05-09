@@ -653,7 +653,7 @@ Animator:
   m_GameObject: {fileID: 142868}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 06726950b6ed22a488d806eb6ced79f2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8fc5a8bd8f533e34cbfe891ea81d6b38, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -672,6 +672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca28de4d07922264abd2e5fa6e6835f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatWeapon: 0
   hitPrefab: {fileID: 182464, guid: 85544c5e10704d54abcc10fa32577cd2, type: 2}
   muzzleFlash: {fileID: 197126, guid: b8c4aa7ee3d5b0f4e8386701166f62e2, type: 2}
   audioSource: {fileID: 8281474}
@@ -693,12 +694,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae8cdf4490552742b06f0dfd488ceb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatWeapon: 0
   chrCtrler: {fileID: 0}
   fpsCtrler: {fileID: 0}
   envAnim: {fileID: 0}
   gunAnim: {fileID: 9554588}
   gunTop: {fileID: 419026}
-  gunSpeed: .100000001
+  gunSpeed: .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
