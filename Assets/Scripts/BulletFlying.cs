@@ -11,18 +11,19 @@ public class BulletFlying : MonoBehaviour {
 	[SerializeField] private AudioClip reloadSound;
 	[SerializeField] private AudioClip noAmmoSound;
 	[SerializeField] private float _fireDistance = 100f;
+	[SerializeField] private float rayBackwardOffset = 10f;
 	[SerializeField] private int bulletCount = 30;
 	public int BulletCount { get { return bulletCount; } }
 	[SerializeField] private int bulletMaxCount = 30;
 	public int BulletMaxCount { get { return bulletMaxCount; } }
 
 	void Update () {
-		Debug.DrawRay(transform.position, transform.forward * _fireDistance, Color.green);
+		Debug.DrawRay(transform.TransformPoint(Vector3.back * rayBackwardOffset), transform.forward * _fireDistance, Color.green);
 	}
 
 	void BulletHit () {
 		RaycastHit hit = new RaycastHit();
-		Ray ray = new Ray (transform.position, transform.forward);
+		Ray ray = new Ray (transform.TransformPoint(Vector3.back * rayBackwardOffset), transform.forward);
 		if (bulletCount > 0) {
 			if (!combatWeapon) {
 				bulletCount --;

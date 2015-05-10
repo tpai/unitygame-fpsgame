@@ -4495,10 +4495,6 @@ Prefab:
       propertyPath: envAnim
       value: 
       objectReference: {fileID: 1852954079}
-    - target: {fileID: 118498, guid: e94f2085301aebd489ce2d1d5ca15c3a, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e94f2085301aebd489ce2d1d5ca15c3a, type: 2}
   m_IsPrefabParent: 0

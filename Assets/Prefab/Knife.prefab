@@ -84,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: .5}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 473744}
@@ -225,7 +225,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f71234f6f7410b24b92952bb03560aab, type: 3}
   reloadSound: {fileID: 0}
   noAmmoSound: {fileID: 0}
-  _fireDistance: 2
+  _fireDistance: 5
+  rayBackwardOffset: .5
   bulletCount: 10000
   bulletMaxCount: 10000
 --- !u!114 &11429864
