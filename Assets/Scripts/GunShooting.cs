@@ -18,6 +18,14 @@ public class GunShooting : MonoBehaviour {
 	bool isSprinting = false;
 	bool isReloading = false;
 
+	void OnEnable () {
+		holdShoot = false;
+		isAiming = false;
+		isCrounching = false;
+		isSprinting = false;
+		isReloading = false;
+	}
+
 	void Update () {
 
 		if (!isSprinting && Input.GetMouseButtonDown (1)) {
