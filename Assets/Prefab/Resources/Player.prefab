@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 473336}
   - 95: {fileID: 9587622}
-  - 114: {fileID: 11497346}
+  - 114: {fileID: 11461274}
   m_Layer: 13
   m_Name: SMG
   m_TagString: Untagged
@@ -26,7 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 465532}
   - 95: {fileID: 9512622}
-  - 114: {fileID: 11411326}
+  - 114: {fileID: 11470128}
   m_Layer: 13
   m_Name: Magnum
   m_TagString: Untagged
@@ -49,6 +49,7 @@ GameObject:
   - 33: {fileID: 3350860}
   - 23: {fileID: 2392940}
   - 114: {fileID: 11493462}
+  - 114: {fileID: 11416374}
   - 114: {fileID: 11418612}
   m_Layer: 0
   m_Name: Player
@@ -313,7 +314,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 445898}
   - 95: {fileID: 9520960}
-  - 114: {fileID: 11481680}
+  - 114: {fileID: 11477218}
   m_Layer: 13
   m_Name: Knife
   m_TagString: Untagged
@@ -348,6 +349,7 @@ GameObject:
   - 20: {fileID: 2008194}
   - 81: {fileID: 8111762}
   - 95: {fileID: 9578988}
+  - 114: {fileID: 11420510}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -1637,25 +1639,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11411326
+--- !u!114 &11416374
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103006}
+  m_GameObject: {fileID: 105584}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae8cdf4490552742b06f0dfd488ceb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 44046cae91ba2e54f93d0cb5cfff10e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatWeapon: 0
-  chrCtrler: {fileID: 14371856}
-  fpsCtrler: {fileID: 11481562}
-  envAnim: {fileID: 9578988}
-  gunAnim: {fileID: 9512622}
-  gunTop: {fileID: 473596}
-  gunSpeed: .5
-  isReloading: 0
 --- !u!114 &11418612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1669,6 +1663,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posSpeed: 10
   rotSpeed: 10
+--- !u!114 &11420510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae8cdf4490552742b06f0dfd488ceb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chrCtrler: {fileID: 14371856}
+  fpsCtrler: {fileID: 11481562}
+  envAnim: {fileID: 9578988}
+  isReloading: 0
 --- !u!114 &11434758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1733,6 +1742,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11461274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e407f256102864aa9f60ca243062c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11469598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1746,6 +1766,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8261092}
   holdingWeapon: 0
+--- !u!114 &11470128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e407f256102864aa9f60ca243062c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11474014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1769,6 +1800,17 @@ MonoBehaviour:
   rayBackwardOffset: .5
   bulletCount: 10000
   bulletMaxCount: 10000
+--- !u!114 &11477218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e407f256102864aa9f60ca243062c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11481562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1861,25 +1903,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
---- !u!114 &11481680
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 168446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae8cdf4490552742b06f0dfd488ceb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combatWeapon: 1
-  chrCtrler: {fileID: 14371856}
-  fpsCtrler: {fileID: 11481562}
-  envAnim: {fileID: 9578988}
-  gunAnim: {fileID: 9520960}
-  gunTop: {fileID: 458436}
-  gunSpeed: .300000012
-  isReloading: 0
 --- !u!114 &11493462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1905,25 +1928,6 @@ MonoBehaviour:
   viewIdField: 0
   instantiationId: -1
   isRuntimeInstantiated: 0
---- !u!114 &11497346
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae8cdf4490552742b06f0dfd488ceb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combatWeapon: 0
-  chrCtrler: {fileID: 14371856}
-  fpsCtrler: {fileID: 11481562}
-  envAnim: {fileID: 9578988}
-  gunAnim: {fileID: 9587622}
-  gunTop: {fileID: 410950}
-  gunSpeed: .100000001
-  isReloading: 0
 --- !u!114 &11497420
 MonoBehaviour:
   m_ObjectHideFlags: 1

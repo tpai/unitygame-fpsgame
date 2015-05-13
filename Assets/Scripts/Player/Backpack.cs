@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Backpack : MonoBehaviour {
+public class Backpack : PlayerBase {
 
 	[SerializeField] private AudioSource audioSource;
 	public enum HandHold { MeleeWeapon, MainWeapon, SecondaryWeapon };
@@ -39,17 +39,29 @@ public class Backpack : MonoBehaviour {
 	
 	void WeaponCheck () {
 		PutDownAllWeapons ();
+		bool combat = false;
+		string str = "";
+		float spd = 0f;
 		switch (holdingWeapon) {
 			case HandHold.MeleeWeapon:
-				transform.Find ("MeleeWeapon").gameObject.SetActive(true);
+			combat = true;
+			str = "MeleeWeapon";
+			spd = .3f;
 			break;
 			case HandHold.MainWeapon:
-				transform.Find ("MainWeapon").gameObject.SetActive(true);
+			str = "MainWeapon";
+			spd = .1f;
 			break;
 			case HandHold.SecondaryWeapon:
-				transform.Find ("SecondaryWeapon").gameObject.SetActive(true);
+			str = "SecondaryWeapon";
+			spd = .5f;
 			break;
 		}
+
+		Transform weapon = transform.Find (str);
+		weapon.gameObject.SetActive(true);
+		GunShooting.ArmWeapon(combat, weapon.GetChild(0).GetComponentInChildren<Animator>(), weapon.GetChild(0).transform.Find ("Top"), spd);
+
 		audioSource.Play ();
 	}
 

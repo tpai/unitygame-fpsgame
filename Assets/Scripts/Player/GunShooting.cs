@@ -2,16 +2,18 @@
 using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
 
-public class GunShooting : MonoBehaviour {
+public class GunShooting : PlayerBase {
 
-	public bool combatWeapon = false;
 	[SerializeField] private CharacterController chrCtrler;
 	[SerializeField] private FirstPersonController fpsCtrler;
 	[SerializeField] private Animator envAnim;
-	[SerializeField] private Animator gunAnim;
-	[SerializeField] private Transform gunTop;
-	public float gunSpeed = .2f;
 
+	bool combatWeapon = false;
+	Animator gunAnim;
+	Transform gunTop;
+	float gunSpeed = .2f;
+
+	bool isArmed = false;
 	bool holdShoot = false;
 	bool isAiming = false;
 	bool isCrounching = false;
@@ -26,7 +28,18 @@ public class GunShooting : MonoBehaviour {
 		isReloading = false;
 	}
 
+	public void ArmWeapon (bool combat, Animator anim, Transform top, float spd) {
+		isArmed = true;
+		combatWeapon = combat;
+		gunAnim = anim;
+		gunTop = top;
+		gunSpeed = spd;
+	}
+
 	void Update () {
+
+		if (!isArmed)
+			return;
 
 		if (!isSprinting && Input.GetMouseButtonDown (1)) {
 			isAiming = true;
