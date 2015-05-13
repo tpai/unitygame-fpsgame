@@ -36,9 +36,8 @@ public class BulletFlying : MonoBehaviour {
 					Instantiate(hitPrefab, hit.point, Quaternion.FromToRotation (Vector3.forward, hit.normal));
 				}
 
-				if (hit.collider.tag == "Enemy")
-					if (hit.collider.name.Contains ("Barrel"))
-						hit.collider.transform.parent.SendMessage ("Broken", hit.point, SendMessageOptions.DontRequireReceiver);
+				if (hit.collider.name.Contains ("Barrel"))
+					hit.collider.transform.parent.SendMessage ("Broken", hit.point, SendMessageOptions.DontRequireReceiver);
 			}
 
 			SoundPlay (bulletSound [Random.Range(0, bulletSound.Length)]);
