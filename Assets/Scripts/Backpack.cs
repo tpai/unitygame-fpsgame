@@ -6,7 +6,6 @@ public class Backpack : MonoBehaviour {
 	[SerializeField] private AudioSource audio;
 	public enum HandHold { MeleeWeapon, MainWeapon, SecondaryWeapon };
 	public HandHold holdingWeapon;
-	public bool noSwitching = false;
 
 	void Start () {
 		WeaponCheck ();
