@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Backpack : MonoBehaviour {
 
-	[SerializeField] private AudioSource audio;
+	[SerializeField] private AudioSource audioSource;
 	public enum HandHold { MeleeWeapon, MainWeapon, SecondaryWeapon };
 	public HandHold holdingWeapon;
 
@@ -50,7 +50,7 @@ public class Backpack : MonoBehaviour {
 				transform.Find ("SecondaryWeapon").gameObject.SetActive(true);
 			break;
 		}
-		audio.Play ();
+		audioSource.Play ();
 	}
 
 	void PutDownAllWeapons () {

@@ -27,15 +27,13 @@ public class BulletFlying : MonoBehaviour {
 		if (bulletCount > 0) {
 			if (!combatWeapon) {
 				bulletCount --;
-				GameObject muzObj = (GameObject)Instantiate (muzzleFlash, transform.position, transform.rotation);
-				StartCoroutine ( DestroyBulletHole(muzObj, 2f) );
+				Instantiate (muzzleFlash, transform.position, transform.rotation);
 			}
 			
 			if (hitPrefab != null && Physics.Raycast (ray, out hit, _fireDistance)){
 
 				if (hit.collider.tag == "Wall" || hit.collider.tag == "Ground") {
-					GameObject hitObj = (GameObject)Instantiate(hitPrefab, hit.point, Quaternion.FromToRotation (Vector3.forward, hit.normal));
-					StartCoroutine ( DestroyBulletHole(hitObj, 2f) );
+					Instantiate(hitPrefab, hit.point, Quaternion.FromToRotation (Vector3.forward, hit.normal));
 				}
 
 				if (hit.collider.tag == "Enemy")
@@ -48,11 +46,6 @@ public class BulletFlying : MonoBehaviour {
 		else {
 			SoundPlay (noAmmoSound);
 		}
-	}
-
-	IEnumerator DestroyBulletHole (GameObject obj, float duration) {
-		yield return new WaitForSeconds (duration);
-		Destroy (obj);
 	}
 
 	void PlayReloadSound () {
