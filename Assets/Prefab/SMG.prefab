@@ -87,8 +87,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138760}
   m_LocalRotation: {x: 0, y: -.0789853036, z: 0, w: .996875763}
-  m_LocalPosition: {x: .181535244, y: -.408999979, z: .77554512}
-  m_LocalScale: {x: .225792408, y: .225792468, z: .225792468}
+  m_LocalPosition: {x: .181535244, y: -.408999979, z: .775547028}
+  m_LocalScale: {x: .225792408, y: .225792468, z: .225792482}
   m_Children:
   - {fileID: 467524}
   - {fileID: 444588}
@@ -285,6 +285,7 @@ MonoBehaviour:
   gunAnim: {fileID: 9541432}
   gunTop: {fileID: 493788}
   gunSpeed: .100000001
+  isReloading: 0
 --- !u!114 &11467338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,6 +308,7 @@ MonoBehaviour:
   reloadSound: {fileID: 8300000, guid: edafe7f625baf8f499178a20379f38c1, type: 3}
   noAmmoSound: {fileID: 8300000, guid: 26b5b27c298acd54dbd03f9bb96c6004, type: 3}
   _fireDistance: 100
+  rayBackwardOffset: 0
   bulletCount: 30
   bulletMaxCount: 30
 --- !u!1001 &100100000
