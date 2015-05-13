@@ -6,24 +6,36 @@ public class Backpack : MonoBehaviour {
 	[SerializeField] private AudioSource audio;
 	public enum HandHold { MeleeWeapon, MainWeapon, SecondaryWeapon };
 	public HandHold holdingWeapon;
+	public bool noSwitching = false;
 
 	void Start () {
 		WeaponCheck ();
 	}
 
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Alpha1)) {
+
+		if (CheckIfReloading())
+			return;
+
+		if (holdingWeapon != HandHold.MeleeWeapon && Input.GetKeyDown (KeyCode.Alpha1)) {
 			holdingWeapon = HandHold.MeleeWeapon;
 			WeaponCheck ();
 		}
-		if (Input.GetKeyDown (KeyCode.Alpha2)) {
+		if (holdingWeapon != HandHold.SecondaryWeapon && Input.GetKeyDown (KeyCode.Alpha2)) {
 			holdingWeapon = HandHold.SecondaryWeapon;
 			WeaponCheck ();
 		}
-		if (Input.GetKeyDown (KeyCode.Alpha3)) {
+		if (holdingWeapon != HandHold.MainWeapon && Input.GetKeyDown (KeyCode.Alpha3)) {
 			holdingWeapon = HandHold.MainWeapon;
 			WeaponCheck ();
 		}
+	}
+
+	bool CheckIfReloading () {
+		foreach (GunShooting gun in transform.GetComponentsInChildren<GunShooting>()) {
+			if (gun.isReloading)return true;
+		}
+		return false;
 	}
 	
 	void WeaponCheck () {

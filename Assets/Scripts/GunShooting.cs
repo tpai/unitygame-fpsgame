@@ -16,7 +16,7 @@ public class GunShooting : MonoBehaviour {
 	bool isAiming = false;
 	bool isCrounching = false;
 	bool isSprinting = false;
-	bool isReloading = false;
+	public bool isReloading = false;
 
 	void OnEnable () {
 		holdShoot = false;
