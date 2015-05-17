@@ -827,7 +827,7 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: .216666669
-    functionName: CombatWeaponHit
+    functionName: KnifeHit
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

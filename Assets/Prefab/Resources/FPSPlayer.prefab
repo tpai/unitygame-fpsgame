@@ -1666,6 +1666,9 @@ MonoBehaviour:
   fpsCtrler: {fileID: 11481562}
   envAnim: {fileID: 9578988}
   isArming: 0
+  isAiming: 0
+  isCrouching: 0
+  isSprinting: 0
   isReloading: 0
 --- !u!114 &11434758
 MonoBehaviour:

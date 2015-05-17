@@ -3,11 +3,11 @@ using System.Collections;
 
 public class GunAnimEvent : PlayerBase {
 
-	public void CombatWeaponHit () {
-		GunShooting.CombatWeaponHit ();
+	public void KnifeHit () {
+		GunShooting.KnifeHit ();
 	}
 	
-	public void ClipReloaded () {
-		GunShooting.ClipReloaded ();
+	public void PlayerReloaded () {
+		GunShooting.PlayerReloaded ();
 	}
 }

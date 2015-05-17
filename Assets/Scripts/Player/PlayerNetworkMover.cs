@@ -37,6 +37,7 @@ public class PlayerNetworkMover : PlayerBase {
 	void OnPhotonSerializeView (PhotonStream stream, PhotonMessageInfo info) {
 		SerializeState (stream, info);
 		Backpack.SerializeState (stream, info);
+		GunShooting.SerializeState (stream, info);
 	}
 
 	void SerializeState (PhotonStream stream, PhotonMessageInfo info) {
