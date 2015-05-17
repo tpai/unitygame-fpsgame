@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
 
-public class PlayerNetworkMover : MonoBehaviour {
+public class PlayerNetworkMover : PlayerBase {
 
 	public float posSpeed = 10f;
 	public float rotSpeed = 10f;
@@ -15,6 +15,7 @@ public class PlayerNetworkMover : MonoBehaviour {
 			GetComponent<FirstPersonController> ().enabled = true;
 			GetComponentInChildren<Camera> ().enabled = true;
 			GetComponentInChildren<AudioListener> ().enabled = true;
+			GetComponentInChildren<GunShooting>().enabled = true;
 		}
 	}
 
@@ -35,6 +36,7 @@ public class PlayerNetworkMover : MonoBehaviour {
 
 	void OnPhotonSerializeView (PhotonStream stream, PhotonMessageInfo info) {
 		SerializeState (stream, info);
+		Backpack.SerializeState (stream, info);
 	}
 
 	void SerializeState (PhotonStream stream, PhotonMessageInfo info) {

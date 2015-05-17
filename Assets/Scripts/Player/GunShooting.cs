@@ -13,8 +13,8 @@ public class GunShooting : PlayerBase {
 	Transform gunTop;
 	float gunSpeed = .2f;
 
-	bool isArmed = false;
 	bool holdShoot = false;
+	public bool isArming = false;
 	bool isAiming = false;
 	bool isCrounching = false;
 	bool isSprinting = false;
@@ -22,6 +22,7 @@ public class GunShooting : PlayerBase {
 
 	void OnEnable () {
 		holdShoot = false;
+		isArming = false;
 		isAiming = false;
 		isCrounching = false;
 		isSprinting = false;
@@ -29,7 +30,7 @@ public class GunShooting : PlayerBase {
 	}
 
 	public void ArmWeapon (bool combat, Animator anim, Transform top, float spd) {
-		isArmed = true;
+		isArming = false;
 		combatWeapon = combat;
 		gunAnim = anim;
 		gunTop = top;
@@ -38,7 +39,7 @@ public class GunShooting : PlayerBase {
 
 	void Update () {
 
-		if (!isArmed)
+		if (isArming)
 			return;
 
 		if (!isSprinting && Input.GetMouseButtonDown (1)) {

@@ -4,67 +4,76 @@ using System.Collections;
 public class Backpack : PlayerBase {
 
 	[SerializeField] private AudioSource audioSource;
-	public enum HandHold { MeleeWeapon, MainWeapon, SecondaryWeapon };
-	public HandHold holdingWeapon;
+	public enum Weapon { Nothing, Melee, Main, Secondary };
+	public Weapon holdingWeapon;
+
+	Weapon m_NetworkedHoldingWeapon;
 
 	void Start () {
 		WeaponCheck ();
 	}
 
-	void Update () {
+	void FixedUpdate () {
 
-		if (CheckIfReloading())
+		if (!PhotonView.isMine)
 			return;
 
-		if (holdingWeapon != HandHold.MeleeWeapon && Input.GetKeyDown (KeyCode.Alpha1)) {
-			holdingWeapon = HandHold.MeleeWeapon;
+		if (GunShooting.isReloading)
+			return;
+
+		if (holdingWeapon != Weapon.Melee && Input.GetKeyDown (KeyCode.Alpha1)) {
+			holdingWeapon = Weapon.Melee;
 			WeaponCheck ();
 		}
-		if (holdingWeapon != HandHold.SecondaryWeapon && Input.GetKeyDown (KeyCode.Alpha2)) {
-			holdingWeapon = HandHold.SecondaryWeapon;
+		if (holdingWeapon != Weapon.Secondary && Input.GetKeyDown (KeyCode.Alpha2)) {
+			holdingWeapon = Weapon.Secondary;
 			WeaponCheck ();
 		}
-		if (holdingWeapon != HandHold.MainWeapon && Input.GetKeyDown (KeyCode.Alpha3)) {
-			holdingWeapon = HandHold.MainWeapon;
+		if (holdingWeapon != Weapon.Main && Input.GetKeyDown (KeyCode.Alpha3)) {
+			holdingWeapon = Weapon.Main;
 			WeaponCheck ();
 		}
 	}
 
-	bool CheckIfReloading () {
-		foreach (GunShooting gun in transform.GetComponentsInChildren<GunShooting>()) {
-			if (gun.isReloading)return true;
-		}
-		return false;
-	}
-	
 	void WeaponCheck () {
+
+		if (!PhotonView.isMine) {
+
+			if (m_NetworkedHoldingWeapon == holdingWeapon)
+				return;
+
+			holdingWeapon = m_NetworkedHoldingWeapon;
+			GunShooting.isArming = true;
+		}
+
 		PutDownAllWeapons ();
 
 		bool combat = false;
-		string weaponType = "";
+		string type = "";
 		float spd = 0f;
 
 		switch (holdingWeapon) {
-			case HandHold.MeleeWeapon:
+		case Weapon.Nothing:
+		case Weapon.Melee:
 			combat = true;
-			weaponType = "MeleeWeapon";
+			type = "MeleeWeapon";
 			spd = .3f;
 			break;
-			case HandHold.MainWeapon:
-			weaponType = "MainWeapon";
+		case Weapon.Main:
+			type = "MainWeapon";
 			spd = .1f;
 			break;
-			case HandHold.SecondaryWeapon:
-			weaponType = "SecondaryWeapon";
+		case Weapon.Secondary:
+			type = "SecondaryWeapon";
 			spd = .5f;
 			break;
 		}
 
-		Transform weapon = transform.Find (weaponType);
+		Transform weapon = transform.Find (type);
 		weapon.gameObject.SetActive(true);
 		GunShooting.ArmWeapon(
 			combat, 
-			weapon.GetChild(0).GetComponentInChildren<Animator>(), 
+			weapon.GetChild(0).GetComponent<Animator>(), 
 			weapon.GetChild(0).transform.Find ("Top"), 
 			spd
 		);
@@ -76,5 +85,26 @@ public class Backpack : PlayerBase {
 		foreach (Transform weapon in transform) {
 			weapon.gameObject.SetActive(false);
 		}
+	}
+
+	public void SerializeState (PhotonStream stream, PhotonMessageInfo info) {
+		if (stream.isWriting) {
+			stream.SendNext (holdingWeapon.ToString ());
+		} else {
+			m_NetworkedHoldingWeapon = FromStringToEnum((string)stream.ReceiveNext());
+			WeaponCheck ();
+		}
+	}
+
+
+	Weapon FromStringToEnum (string str) {
+		System.Array values = System.Enum.GetValues(typeof(Weapon));
+		foreach( Weapon val in values )
+		{
+			if (str == val.ToString ()) {
+				return val;
+			}
+		}
+		return Weapon.Melee;
 	}
 }

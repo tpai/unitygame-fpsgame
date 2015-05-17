@@ -1665,6 +1665,7 @@ MonoBehaviour:
   chrCtrler: {fileID: 14371856}
   fpsCtrler: {fileID: 11481562}
   envAnim: {fileID: 9578988}
+  isArming: 0
   isReloading: 0
 --- !u!114 &11434758
 MonoBehaviour:
@@ -1753,7 +1754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8261092}
-  holdingWeapon: 0
+  holdingWeapon: 1
 --- !u!114 &11470128
 MonoBehaviour:
   m_ObjectHideFlags: 1

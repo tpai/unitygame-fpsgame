@@ -19,7 +19,20 @@ public class PlayerBase : MonoBehaviour {
 			if (m_GunShooting == null) {
 				m_GunShooting = GetComponentInParent<GunShooting>();
 			}
+			if (m_GunShooting == null) {
+				m_GunShooting = GetComponentInChildren<GunShooting>();
+			}
 			return m_GunShooting;
+		}
+	}
+
+	PhotonView m_PhotonView;
+	public PhotonView PhotonView {
+		get {
+			if (m_PhotonView == null) {
+				m_PhotonView = GetComponentInParent<PhotonView>();
+			}
+			return m_PhotonView;
 		}
 	}
 }
