@@ -39,28 +39,35 @@ public class Backpack : PlayerBase {
 	
 	void WeaponCheck () {
 		PutDownAllWeapons ();
+
 		bool combat = false;
-		string str = "";
+		string weaponType = "";
 		float spd = 0f;
+
 		switch (holdingWeapon) {
 			case HandHold.MeleeWeapon:
 			combat = true;
-			str = "MeleeWeapon";
+			weaponType = "MeleeWeapon";
 			spd = .3f;
 			break;
 			case HandHold.MainWeapon:
-			str = "MainWeapon";
+			weaponType = "MainWeapon";
 			spd = .1f;
 			break;
 			case HandHold.SecondaryWeapon:
-			str = "SecondaryWeapon";
+			weaponType = "SecondaryWeapon";
 			spd = .5f;
 			break;
 		}
 
-		Transform weapon = transform.Find (str);
+		Transform weapon = transform.Find (weaponType);
 		weapon.gameObject.SetActive(true);
-		GunShooting.ArmWeapon(combat, weapon.GetChild(0).GetComponentInChildren<Animator>(), weapon.GetChild(0).transform.Find ("Top"), spd);
+		GunShooting.ArmWeapon(
+			combat, 
+			weapon.GetChild(0).GetComponentInChildren<Animator>(), 
+			weapon.GetChild(0).transform.Find ("Top"), 
+			spd
+		);
 
 		audioSource.Play ();
 	}

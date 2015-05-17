@@ -8,14 +8,13 @@ public class NetworkManager : MonoBehaviour {
 	[SerializeField] Text connectionText;
 	[SerializeField] InputField messageText;
 
-	[SerializeField] Camera camera;
-	[SerializeField] AudioListener audioListener;
+	[SerializeField] Camera panelCamera;
+	[SerializeField] AudioListener panelAudioListener;
 	[SerializeField] Transform loginPanel;
 	[SerializeField] InputField playerName;
 
 	[SerializeField] Transform[] spawnPoints;
 
-	GameObject player;
 	Queue<string> messages;
 	const int messageCount = 7;
 	PhotonView photonView;
@@ -53,8 +52,8 @@ public class NetworkManager : MonoBehaviour {
 	}
 
 	void StartSpawnProcess (float respawnTime) {
-		camera.enabled = true;
-		audioListener.enabled = true;
+		panelCamera.enabled = true;
+		panelAudioListener.enabled = true;
 		StartCoroutine ("SpawnPlayer", respawnTime);
 	}
 
@@ -62,16 +61,14 @@ public class NetworkManager : MonoBehaviour {
 		yield return new WaitForSeconds(respawnTime);
 		
 		int index = Random.Range (0, spawnPoints.Length);
-		player = PhotonNetwork.Instantiate (
-			"Player", 
+		PhotonNetwork.Instantiate (
+			"FPSPlayer", 
 			spawnPoints [index].position, 
 			spawnPoints [index].rotation, 
 			0
 		);
-//		player.GetComponent<PlayerNetworkMover> ().RespawnMe += StartSpawnProcess;
-//		player.GetComponent<PlayerNetworkMover> ().SendNetworkMessage += AddMessage;
-		camera.enabled = false;
-		audioListener.enabled = false;
+		panelCamera.enabled = false;
+		panelAudioListener.enabled = false;
 		loginPanel.gameObject.SetActive (false);
 		
 		AddMessage ("Spawned player: " + PhotonNetwork.player.name);
