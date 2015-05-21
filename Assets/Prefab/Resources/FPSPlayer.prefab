@@ -336,7 +336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &180210
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +502,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.50399995, z: 2.63000011}
+  m_LocalPosition: {x: -.00300000003, y: 1.21000004, z: 2.61199999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 473336}
@@ -1788,7 +1788,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f71234f6f7410b24b92952bb03560aab, type: 3}
   reloadSound: {fileID: 0}
   noAmmoSound: {fileID: 0}
-  _fireDistance: 5
+  _fireDistance: 3
   rayBackwardOffset: .5
   bulletCount: 10000
   bulletMaxCount: 10000

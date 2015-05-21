@@ -50,4 +50,9 @@ public class PlayerNetworkMover : PlayerBase {
 			m_NetworkedRotation = (Quaternion)stream.ReceiveNext ();
 		}
 	}
+
+	[RPC]
+	public void PlayerHit () {
+		GunShooting.Hit ();
+	}
 }

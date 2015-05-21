@@ -85,18 +85,27 @@ public class GunShooting : PlayerBase {
 		}
 	}
 
+
 	IEnumerator ShootBullet () {
 		holdFire = true;
+
+		PhotonView.RPC (
+			"PlayerHit",
+			PhotonTargets.All
+		);
+
+		yield return new WaitForSeconds (gunSpeed);
+		holdFire = false;
+	}
+
+	public void Hit () {
 
 		if (gunTop.GetComponent<BulletFlying> ().BulletCount > 0) {
 			gunAnim.SetTrigger ("shoot");
 		}
-		if (!combatWeapon) {
-			gunTop.SendMessage ("BulletHit");
-		}
 
-		yield return new WaitForSeconds (gunSpeed);
-		holdFire = false;
+		if (!combatWeapon)
+			gunTop.SendMessage ("BulletHit");
 	}
 
 	public void KnifeHit () {

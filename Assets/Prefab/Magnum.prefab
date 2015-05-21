@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 441302}
   - 95: {fileID: 9554588}
-  - 114: {fileID: 11431422}
   m_Layer: 13
   m_Name: Magnum
   m_TagString: Untagged
@@ -684,25 +683,6 @@ MonoBehaviour:
   rayBackwardOffset: 0
   bulletCount: 5
   bulletMaxCount: 5
---- !u!114 &11431422
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae8cdf4490552742b06f0dfd488ceb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combatWeapon: 0
-  chrCtrler: {fileID: 0}
-  fpsCtrler: {fileID: 0}
-  envAnim: {fileID: 0}
-  gunAnim: {fileID: 9554588}
-  gunTop: {fileID: 419026}
-  gunSpeed: .5
-  isReloading: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

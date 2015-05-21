@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 473744}
   - 95: {fileID: 9561246}
-  - 114: {fileID: 11429864}
   m_Layer: 13
   m_Name: Knife
   m_TagString: Untagged
@@ -229,24 +228,6 @@ MonoBehaviour:
   rayBackwardOffset: .5
   bulletCount: 10000
   bulletMaxCount: 10000
---- !u!114 &11429864
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae8cdf4490552742b06f0dfd488ceb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combatWeapon: 1
-  chrCtrler: {fileID: 0}
-  fpsCtrler: {fileID: 0}
-  envAnim: {fileID: 0}
-  gunAnim: {fileID: 9561246}
-  gunTop: {fileID: 474520}
-  gunSpeed: .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
