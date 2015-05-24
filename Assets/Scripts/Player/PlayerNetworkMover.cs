@@ -8,7 +8,7 @@ public class PlayerNetworkMover : PlayerBase {
 	public float rotSpeed = 10f;
 
 	Vector3 m_NetworkedPosition;
-	Quaternion m_NetworkedRotation;
+	Quaternion m_NetworkedRotation = Quaternion.identity;
 
 	void Start () {
 		if (GetComponent<PhotonView>().isMine) {
@@ -38,6 +38,7 @@ public class PlayerNetworkMover : PlayerBase {
 		SerializeState (stream, info);
 		Backpack.SerializeState (stream, info);
 		GunShooting.SerializeState (stream, info);
+		HPController.SerializeState (stream, info);
 	}
 
 	void SerializeState (PhotonStream stream, PhotonMessageInfo info) {

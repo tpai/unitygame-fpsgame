@@ -61,17 +61,29 @@ public class NetworkManager : MonoBehaviour {
 		yield return new WaitForSeconds(respawnTime);
 		
 		int index = Random.Range (0, spawnPoints.Length);
-		PhotonNetwork.Instantiate (
+		GameObject player = (GameObject)PhotonNetwork.Instantiate (
 			"FPSPlayer", 
 			spawnPoints [index].position, 
 			spawnPoints [index].rotation, 
 			0
 		);
+
+		player.GetComponent<HPController> ().PlayerKilledBy += KillPlayer;
+
 		panelCamera.enabled = false;
 		panelAudioListener.enabled = false;
 		loginPanel.gameObject.SetActive (false);
 		
 		AddMessage ("Spawned player: " + PhotonNetwork.player.name);
+	}
+
+	void KillPlayer () {
+		panelCamera.enabled = true;
+		panelAudioListener.enabled = true;
+
+		StartCoroutine ("SpawnPlayer", 3f);
+
+		AddMessage ("Killed player: " + PhotonNetwork.player.name);
 	}
 	
 	void AddMessage(string message) {

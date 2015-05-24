@@ -4,7 +4,7 @@ using System.Collections;
 public class Backpack : PlayerBase {
 
 	[SerializeField] private AudioSource audioSource;
-	public enum Weapon { Nothing, Melee, Main, Secondary };
+	public enum Weapon { Melee, Main, Secondary };
 	public Weapon holdingWeapon;
 
 	Weapon m_NetworkedHoldingWeapon;
@@ -53,7 +53,6 @@ public class Backpack : PlayerBase {
 		float spd = 0f;
 
 		switch (holdingWeapon) {
-		case Weapon.Nothing:
 		case Weapon.Melee:
 			combat = true;
 			type = "MeleeWeapon";

@@ -16,6 +16,7 @@ public class BulletFlying : MonoBehaviour {
 	public int BulletCount { get { return bulletCount; } }
 	[SerializeField] private int bulletMaxCount = 30;
 	public int BulletMaxCount { get { return bulletMaxCount; } }
+	public int weaponPower = 2;
 
 	void Update () {
 		Debug.DrawRay(transform.TransformPoint(Vector3.back * rayBackwardOffset), transform.forward * _fireDistance, Color.green);
@@ -38,6 +39,9 @@ public class BulletFlying : MonoBehaviour {
 
 				if (hit.collider.name.Contains ("Barrel"))
 					hit.collider.transform.parent.SendMessage ("Broken", hit.point, SendMessageOptions.DontRequireReceiver);
+
+				if (hit.collider.tag == "Player")
+					hit.collider.GetComponent<HPController>().AddHP(-weaponPower);
 			}
 
 			SoundPlay (bulletSound [Random.Range(0, bulletSound.Length)]);

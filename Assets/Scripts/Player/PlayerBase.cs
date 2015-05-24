@@ -35,4 +35,14 @@ public class PlayerBase : MonoBehaviour {
 			return m_PhotonView;
 		}
 	}
+
+	HPController m_HPController;
+	public HPController HPController {
+		get {
+			if (m_HPController == null) {
+				m_HPController = GetComponent<HPController> ();
+			}
+			return m_HPController;
+		}
+	}
 }
