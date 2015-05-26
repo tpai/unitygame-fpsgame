@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BulletFlying : MonoBehaviour {
+public class BulletFlying : PlayerBase {
 
 	public bool combatWeapon = false;
 	[SerializeField] private GameObject hitPrefab;
@@ -41,7 +41,7 @@ public class BulletFlying : MonoBehaviour {
 					hit.collider.transform.parent.SendMessage ("Broken", hit.point, SendMessageOptions.DontRequireReceiver);
 
 				if (hit.collider.tag == "Player")
-					hit.collider.GetComponent<HPController>().AddHP(-weaponPower);
+					hit.collider.GetComponent<HPController>().AddHP(-weaponPower, PhotonView.owner.name);
 			}
 
 			SoundPlay (bulletSound [Random.Range(0, bulletSound.Length)]);

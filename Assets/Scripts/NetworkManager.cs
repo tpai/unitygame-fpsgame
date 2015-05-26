@@ -77,13 +77,18 @@ public class NetworkManager : MonoBehaviour {
 		AddMessage ("Spawned player: " + PhotonNetwork.player.name);
 	}
 
-	void KillPlayer () {
-		panelCamera.enabled = true;
-		panelAudioListener.enabled = true;
+	void KillPlayer (string player, string killer) {
+		photonView.RPC ("KillPlayer_RPC", PhotonTargets.All, player, killer);
+	}
 
-		StartCoroutine ("SpawnPlayer", 3f);
-
-		AddMessage ("Killed player: " + PhotonNetwork.player.name);
+	[RPC]
+	void KillPlayer_RPC (string player, string killer) {
+		if (PhotonNetwork.player.name == player) {
+			panelCamera.enabled = true;
+			panelAudioListener.enabled = true;
+			StartCoroutine ("SpawnPlayer", 3f);
+			AddMessage (killer+" kill " + player+"!");
+		}
 	}
 	
 	void AddMessage(string message) {
@@ -101,4 +106,6 @@ public class NetworkManager : MonoBehaviour {
 			messageText.text += m + "\n";
 		}
 	}
+
+	void OnPhotonSerializeView (PhotonStream stream, PhotonMessageInfo info) {}
 }

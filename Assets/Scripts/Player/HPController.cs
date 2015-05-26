@@ -4,7 +4,7 @@ using System.Collections;
 
 public class HPController : PlayerBase {
 
-	public delegate void PlayerKilled ();
+	public delegate void PlayerKilled (string player, string killer);
 	public event PlayerKilled PlayerKilledBy;
 
 	[SerializeField] private Slider hpSlider;
@@ -29,19 +29,19 @@ public class HPController : PlayerBase {
 			hpText.text = "";
 			return ;
 		}
+
 		hpSlider.value = nowHP;
 		hpText.text = "HP: " + nowHP + "/" + maxHP;
 	}
 
-	public void AddHP (int amt) {
+	public void AddHP (int amt, string killer) {
 		nowHP += amt;
 
 		if (nowHP <= 0) {
 			nowHP = 0;
 
-			if (PhotonView.isMine &&
-			    PlayerKilledBy != null) {
-				PlayerKilledBy ();
+			if (PlayerKilledBy != null) {
+				PlayerKilledBy (PhotonView.owner.name, killer);
 			}
 
 			Destroy (gameObject);
@@ -54,6 +54,7 @@ public class HPController : PlayerBase {
 			stream.SendNext(nowHP);
 		} else {
 			m_NetworkedNowHP = (int)stream.ReceiveNext();
+			nowHP = m_NetworkedNowHP;
 		}
 	}
 }
