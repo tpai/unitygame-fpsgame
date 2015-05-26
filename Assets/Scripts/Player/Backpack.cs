@@ -36,16 +36,6 @@ public class Backpack : PlayerBase {
 	}
 
 	void WeaponCheck () {
-
-		if (!PhotonView.isMine) {
-
-			if (m_NetworkedHoldingWeapon == holdingWeapon)
-				return;
-
-			holdingWeapon = m_NetworkedHoldingWeapon;
-			GunShooting.isArming = true;
-		}
-
 		PutDownAllWeapons ();
 
 		bool combat = false;
@@ -91,7 +81,12 @@ public class Backpack : PlayerBase {
 			stream.SendNext (holdingWeapon.ToString ());
 		} else {
 			m_NetworkedHoldingWeapon = FromStringToEnum((string)stream.ReceiveNext());
-			WeaponCheck ();
+
+			if (m_NetworkedHoldingWeapon != holdingWeapon) {
+				holdingWeapon = m_NetworkedHoldingWeapon;
+				GunShooting.isArming = true;
+				WeaponCheck ();
+			}
 		}
 	}
 
