@@ -18,6 +18,8 @@ public class BulletFlying : PlayerBase {
 	public int BulletMaxCount { get { return bulletMaxCount; } }
 	public int weaponPower = 2;
 
+	int m_NetworkedBulletCount;
+
 	void Update () {
 		Debug.DrawRay(transform.TransformPoint(Vector3.back * rayBackwardOffset), transform.forward * _fireDistance, Color.green);
 	}
@@ -64,5 +66,15 @@ public class BulletFlying : PlayerBase {
 	void SoundPlay (AudioClip clip) {
 		audioSource.clip = clip;
 		audioSource.Play ();
+	}
+
+	public void SerializeState (PhotonStream stream, PhotonMessageInfo info) {
+		if (stream.isWriting) {
+			stream.SendNext (bulletCount);
+		} else {
+			m_NetworkedBulletCount = (int)stream.ReceiveNext ();
+
+			bulletCount = m_NetworkedBulletCount;
+		}
 	}
 }
