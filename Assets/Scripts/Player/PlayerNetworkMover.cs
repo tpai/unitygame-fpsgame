@@ -13,9 +13,12 @@ public class PlayerNetworkMover : PlayerBase {
 	void Start () {
 		if (GetComponent<PhotonView>().isMine) {
 			GetComponent<FirstPersonController> ().enabled = true;
-			GetComponentInChildren<Camera> ().enabled = true;
 			GetComponentInChildren<AudioListener> ().enabled = true;
 			GetComponentInChildren<GunShooting>().enabled = true;
+			transform.Find ("FirstPersonCharacter").Find("Backpack").gameObject.layer = 13;
+			foreach (Camera cam in GetComponentsInChildren<Camera> ()) {
+				cam.enabled = true;
+			}
 		}
 	}
 
