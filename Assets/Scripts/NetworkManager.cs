@@ -48,6 +48,7 @@ public class NetworkManager : MonoBehaviour {
 	void OnJoinedRoom () {
 		StopCoroutine ("UpdateConnectionText");
 		connectionText.text = "";
+		InitPlayerProperties ();
 		StartSpawnProcess (0f);
 	}
 
@@ -87,8 +88,37 @@ public class NetworkManager : MonoBehaviour {
 			panelCamera.enabled = true;
 			panelAudioListener.enabled = true;
 			StartCoroutine ("SpawnPlayer", 3f);
+			AddDeathCount ();
+			AddMessage ("You've been killed by " + killer+"!");
+
+//			PhotonNetwork.player.SetTeam (PunTeams.Team.red)
+		}
+		else if (PhotonNetwork.player.name == killer) {
+			AddKillCount ();
+			AddMessage ("You killed " + player+"!");
+		}
+		else {
 			AddMessage (killer+" kill " + player+"!");
 		}
+	}
+
+	void InitPlayerProperties () {
+		ExitGames.Client.Photon.Hashtable PlayerCustomProps = new ExitGames.Client.Photon.Hashtable();
+		PlayerCustomProps["Kills"] = 0;
+		PlayerCustomProps["Death"] = 0;
+		PhotonNetwork.player.SetCustomProperties(PlayerCustomProps);
+	}
+
+	void AddKillCount () {
+		ExitGames.Client.Photon.Hashtable props = PhotonNetwork.player.customProperties;
+		props ["Kills"] = (int)props ["Kills"] + 1;
+		PhotonNetwork.player.SetCustomProperties(props);
+	}
+
+	void AddDeathCount () {
+		ExitGames.Client.Photon.Hashtable props = PhotonNetwork.player.customProperties;
+		props ["Death"] = (int)props ["Death"] + 1;
+		PhotonNetwork.player.SetCustomProperties(props);
 	}
 	
 	void AddMessage(string message) {
