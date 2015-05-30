@@ -89,13 +89,13 @@ public class NetworkManager : MonoBehaviour {
 			panelAudioListener.enabled = true;
 			StartCoroutine ("SpawnPlayer", 3f);
 			AddDeathCount ();
-			AddMessage ("You've been killed by " + killer+"!");
+			AddMessage_RPC ("You've been killed by " + killer+"!");
 
 //			PhotonNetwork.player.SetTeam (PunTeams.Team.red)
 		}
 		else if (PhotonNetwork.player.name == killer) {
 			AddKillCount ();
-			AddMessage ("You killed " + player+"!");
+			AddMessage_RPC ("You killed " + player+"!");
 		}
 		else {
 			AddMessage (killer+" kill " + player+"!");
@@ -124,7 +124,7 @@ public class NetworkManager : MonoBehaviour {
 	void AddMessage(string message) {
 		photonView.RPC ("AddMessage_RPC", PhotonTargets.All, message);
 	}
-	
+
 	[RPC]
 	void AddMessage_RPC(string message) {
 		messages.Enqueue (message);

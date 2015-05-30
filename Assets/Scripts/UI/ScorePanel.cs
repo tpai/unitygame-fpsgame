@@ -7,8 +7,10 @@ public class ScorePanel : MonoBehaviour {
 	Animator anim;
 	bool shown = false;
 
-	[SerializeField] private Text deathCountText;
-	[SerializeField] private Text killsCountText;
+	[SerializeField] private Text playerName;
+	[SerializeField] private Text kills;
+	[SerializeField] private Text death;
+
 
 	void Start () {
 		anim = GetComponent<Animator> ();
@@ -17,8 +19,14 @@ public class ScorePanel : MonoBehaviour {
 	void Update () {
 		if (!shown && Input.GetKeyDown (KeyCode.Tab)) {
 			shown = true;
-			deathCountText.text = "Death: "+PhotonNetwork.player.customProperties["Death"].ToString ();
-			killsCountText.text = "Kills: "+PhotonNetwork.player.customProperties["Kills"].ToString ();
+			playerName.text = "";
+			kills.text = "";
+			death.text = "";
+			foreach (PhotonPlayer player in PhotonNetwork.playerList){
+				playerName.text += player.name.ToString()+"\n";
+				kills.text += player.customProperties["Kills"]+"\n";
+				death.text += player.customProperties["Death"]+"\n";
+			}
 			anim.SetBool ("show", true);
 		}
 		if (shown && Input.GetKeyUp (KeyCode.Tab)) {
