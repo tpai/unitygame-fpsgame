@@ -45,4 +45,14 @@ public class PlayerBase : MonoBehaviour {
 			return m_HPController;
 		}
 	}
+	
+	BulletFlying m_BulletFlying;
+	public BulletFlying BulletFlying {
+		get {
+			if (m_BulletFlying == null) {
+				m_BulletFlying = GetComponentInChildren<BulletFlying>();
+			}
+			return m_BulletFlying;
+		}
+	}
 }
