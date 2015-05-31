@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Backpack : PlayerBase {
 
+	public delegate void WeaponChanged ();
+	public event WeaponChanged OnWeaponChanged;
+
 	[SerializeField] private AudioSource audioSource;
 	public enum Weapon { Melee, Main, Secondary };
 	public Weapon holdingWeapon;
@@ -66,7 +69,7 @@ public class Backpack : PlayerBase {
 			weapon.GetChild(0).transform.Find ("Top"), 
 			spd
 		);
-
+		OnWeaponChanged (); // inform AmmoDisplay when weapon changed
 		audioSource.Play ();
 	}
 

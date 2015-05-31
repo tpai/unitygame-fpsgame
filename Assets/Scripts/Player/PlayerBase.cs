@@ -54,5 +54,8 @@ public class PlayerBase : MonoBehaviour {
 			}
 			return m_BulletFlying;
 		}
+		set {
+			m_BulletFlying = value;
+		}
 	}
 }
