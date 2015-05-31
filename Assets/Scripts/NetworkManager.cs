@@ -12,7 +12,6 @@ public class NetworkManager : MonoBehaviour {
 	[SerializeField] AudioListener panelAudioListener;
 	[SerializeField] Transform loginPanel;
 	[SerializeField] InputField playerName;
-
 	[SerializeField] Transform[] spawnPoints;
 
 	Queue<string> messages;
@@ -47,7 +46,9 @@ public class NetworkManager : MonoBehaviour {
 
 	void OnJoinedRoom () {
 		StopCoroutine ("UpdateConnectionText");
+		loginPanel.gameObject.SetActive (false);
 		connectionText.text = "";
+
 		InitPlayerProperties ();
 		StartSpawnProcess (0f);
 	}
@@ -73,8 +74,7 @@ public class NetworkManager : MonoBehaviour {
 
 		panelCamera.enabled = false;
 		panelAudioListener.enabled = false;
-		loginPanel.gameObject.SetActive (false);
-		
+				
 		AddMessage ("Spawned player: " + PhotonNetwork.player.name);
 	}
 
