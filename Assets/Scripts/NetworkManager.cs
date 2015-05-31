@@ -68,7 +68,7 @@ public class NetworkManager : MonoBehaviour {
 			spawnPoints [index].rotation, 
 			0
 		);
-
+		player.name = PhotonNetwork.player.name;
 		player.GetComponent<HPController> ().PlayerKilledBy += KillPlayer;
 
 		panelCamera.enabled = false;

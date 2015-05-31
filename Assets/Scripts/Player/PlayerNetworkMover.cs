@@ -19,6 +19,7 @@ public class PlayerNetworkMover : PlayerBase {
 			foreach (Camera cam in GetComponentsInChildren<Camera> ()) {
 				cam.enabled = true;
 			}
+			transform.Find ("CharCanvas").GetComponent<Canvas>().enabled = false;
 		}
 	}
 
