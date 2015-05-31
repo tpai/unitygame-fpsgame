@@ -12,6 +12,7 @@ public class HPController : PlayerBase {
 
 	public int maxHP = 100;
 	int nowHP;
+	bool isDead = false;
 
 	int m_NetworkedNowHP;
 
@@ -35,10 +36,14 @@ public class HPController : PlayerBase {
 	}
 
 	public void AddHP (int amt, string killer) {
+		
+		if (isDead)return ;
+		
 		nowHP += amt;
 
 		if (nowHP <= 0) {
 			nowHP = 0;
+			isDead = true;
 
 			if (PlayerKilledBy != null) {
 				PlayerKilledBy (PhotonView.owner.name, killer);
