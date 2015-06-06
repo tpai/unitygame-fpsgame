@@ -9630,7 +9630,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1855836520}
+      - m_Target: {fileID: 1855836521}
         m_MethodName: JoinRoom
         m_Mode: 1
         m_Arguments:
@@ -10700,8 +10700,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1855836518}
-  - 114: {fileID: 1855836520}
   - 114: {fileID: 1855836519}
+  - 114: {fileID: 1855836521}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -10741,12 +10741,12 @@ MonoBehaviour:
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 1855836520}
+  - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 1
   instantiationId: 1
   isRuntimeInstantiated: 0
---- !u!114 &1855836520
+--- !u!114 &1855836521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -10754,20 +10754,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1855836517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85bc68364765adb42b664079b0a483aa, type: 3}
+  m_Script: {fileID: 11500000, guid: a478487981efb2641a666cb13ac1392d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectionText: {fileID: 754265610}
-  messageText: {fileID: 290454190}
-  panelCamera: {fileID: 156614394}
-  panelAudioListener: {fileID: 156614391}
-  loginPanel: {fileID: 685187317}
-  playerName: {fileID: 1845975681}
   spawnPoints:
   - {fileID: 1509320206}
   - {fileID: 1675424173}
   - {fileID: 1261313395}
   - {fileID: 1719984453}
+  panelCamera: {fileID: 156614394}
+  panelAudioListener: {fileID: 156614391}
+  connectionText: {fileID: 754265610}
+  messageText: {fileID: 290454190}
+  loginPanel: {fileID: 685187317}
+  playerName: {fileID: 1845975681}
+  photonView: {fileID: 0}
 --- !u!1 &1856162899
 GameObject:
   m_ObjectHideFlags: 0

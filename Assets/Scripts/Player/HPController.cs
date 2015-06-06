@@ -7,12 +7,12 @@ public class HPController : PlayerBase {
 	public delegate void PlayerKilled (string player, string killer);
 	public event PlayerKilled PlayerKilledBy;
 
-	[SerializeField] private Slider hpSlider;
-	[SerializeField] private Text hpText;
+	[SerializeField] protected Slider hpSlider;
+	[SerializeField] protected Text hpText;
 
 	public int maxHP = 100;
-	int nowHP;
-	bool isDead = false;
+	protected int nowHP;
+	protected bool isDead = false;
 
 	int m_NetworkedNowHP;
 
@@ -35,7 +35,7 @@ public class HPController : PlayerBase {
 		hpText.text = "HP: " + nowHP + "/" + maxHP;
 	}
 
-	public void AddHP (int amt, string killer) {
+	public virtual void AddHP (int amt, string killer) {
 		
 		if (isDead)return ;
 		

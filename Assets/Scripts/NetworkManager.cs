@@ -5,18 +5,19 @@ using System.Collections.Generic;
 
 public class NetworkManager : MonoBehaviour {
 
-	[SerializeField] Text connectionText;
-	[SerializeField] InputField messageText;
+	public Transform[] spawnPoints;
 
-	[SerializeField] Camera panelCamera;
-	[SerializeField] AudioListener panelAudioListener;
-	[SerializeField] Transform loginPanel;
-	[SerializeField] InputField playerName;
-	[SerializeField] Transform[] spawnPoints;
+	public Camera panelCamera;
+	public AudioListener panelAudioListener;
 
-	Queue<string> messages;
-	const int messageCount = 7;
-	PhotonView photonView;
+	public Text connectionText;
+	public InputField messageText;
+	public Transform loginPanel;
+	public InputField playerName;
+
+	public Queue<string> messages;
+	public const int messageCount = 7;
+	public PhotonView photonView;
 
 	void Start () {
 		photonView = GetComponent<PhotonView> ();
@@ -59,7 +60,7 @@ public class NetworkManager : MonoBehaviour {
 		StartCoroutine ("SpawnPlayer", respawnTime);
 	}
 
-	IEnumerator SpawnPlayer (float respawnTime) {
+	public virtual IEnumerator SpawnPlayer (float respawnTime) {
 		yield return new WaitForSeconds(respawnTime);
 		
 		int index = Random.Range (0, spawnPoints.Length);
@@ -78,7 +79,7 @@ public class NetworkManager : MonoBehaviour {
 		AddMessage ("Spawned player: " + PhotonNetwork.player.name);
 	}
 
-	void KillPlayer (string player, string killer) {
+	public void KillPlayer (string player, string killer) {
 		photonView.RPC ("KillPlayer_RPC", PhotonTargets.All, player, killer);
 	}
 
@@ -121,12 +122,12 @@ public class NetworkManager : MonoBehaviour {
 		PhotonNetwork.player.SetCustomProperties(props);
 	}
 	
-	void AddMessage(string message) {
+	public void AddMessage(string message) {
 		photonView.RPC ("AddMessage_RPC", PhotonTargets.All, message);
 	}
 
 	[RPC]
-	void AddMessage_RPC(string message) {
+	public void AddMessage_RPC(string message) {
 		messages.Enqueue (message);
 		if(messages.Count > messageCount) {
 			messages.Dequeue();
