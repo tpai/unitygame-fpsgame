@@ -5,5 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Smash.unity
   - enabled: 1
-    path: Assets/Model/cityblock/street1.unity
+    path: Assets/Scenes/Versus.unity
