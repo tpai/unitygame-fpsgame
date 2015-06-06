@@ -58,4 +58,14 @@ public class PlayerBase : MonoBehaviour {
 			m_BulletFlying = value;
 		}
 	}
+
+	Damage m_Damage;
+	public Damage Damage {
+		get {
+			if (m_Damage == null) {
+				m_Damage = GetComponentInChildren<Damage> ();
+			}
+			return m_Damage;
+		}
+	}
 }

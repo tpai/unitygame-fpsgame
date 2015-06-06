@@ -41,6 +41,9 @@ public class HPController : PlayerBase {
 		
 		nowHP += amt;
 
+		if (amt < 0)
+			Damage.GotHurt ();
+
 		if (nowHP <= 0) {
 			nowHP = 0;
 			isDead = true;
