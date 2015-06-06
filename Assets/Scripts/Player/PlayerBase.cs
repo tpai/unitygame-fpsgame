@@ -59,13 +59,13 @@ public class PlayerBase : MonoBehaviour {
 		}
 	}
 
-	Damage m_Damage;
-	public Damage Damage {
+	PlayerDamage m_PlayerDamage;
+	public PlayerDamage PlayerDamage {
 		get {
-			if (m_Damage == null) {
-				m_Damage = GetComponentInChildren<Damage> ();
+			if (m_PlayerDamage == null) {
+				m_PlayerDamage = GetComponentInChildren<PlayerDamage> ();
 			}
-			return m_Damage;
+			return m_PlayerDamage;
 		}
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Damage : PlayerBase {
+public class PlayerDamage : PlayerBase {
 
 	[SerializeField] Animator anim;
 	[SerializeField] AudioSource audioSource;

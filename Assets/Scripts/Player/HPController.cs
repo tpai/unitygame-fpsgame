@@ -42,7 +42,7 @@ public class HPController : PlayerBase {
 		nowHP += amt;
 
 		if (amt < 0)
-			Damage.GotHurt ();
+			PlayerDamage.GotHurt ();
 
 		if (nowHP <= 0) {
 			nowHP = 0;
