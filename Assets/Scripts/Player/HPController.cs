@@ -7,12 +7,12 @@ public class HPController : PlayerBase {
 	public delegate void PlayerKilled (string player, string killer);
 	public event PlayerKilled PlayerKilledBy;
 
-	[SerializeField] protected Slider hpSlider;
-	[SerializeField] protected Text hpText;
+	public Slider hpSlider;
+	public Text hpText;
 
 	public int maxHP = 100;
-	protected int nowHP;
-	protected bool isDead = false;
+	public int nowHP;
+	public bool isDead = false;
 
 	int m_NetworkedNowHP;
 
@@ -52,8 +52,8 @@ public class HPController : PlayerBase {
 				PlayerKilledBy (PhotonView.owner.name, killer);
 			}
 
+			PhotonNetwork.Destroy(gameObject);
 			Destroy (gameObject);
-			PhotonView.Destroy(gameObject);
 		}
 	}
 
