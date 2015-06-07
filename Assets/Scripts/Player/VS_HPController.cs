@@ -25,8 +25,8 @@ public class VS_HPController : HPController {
 				PlayerKilledBy (PhotonView.owner.name, killer);
 			}
 			
+			PhotonNetwork.Destroy(gameObject);
 			Destroy (gameObject);
-			PhotonView.Destroy(gameObject);
 		}
 	}
 
