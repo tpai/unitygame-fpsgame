@@ -4,15 +4,6 @@ using System.Collections.Generic;
 
 public class VS_NetworkManager : NetworkManager {
 
-	void Start () {
-		photonView = GetComponent<PhotonView> ();
-		messages = new Queue<string> (messageCount);
-		
-		PhotonNetwork.logLevel = PhotonLogLevel.Full;
-		PhotonNetwork.ConnectUsingSettings ("1.0");
-		StartCoroutine ("UpdateConnectionText");
-	}
-
 	public override IEnumerator SpawnPlayer (float respawnTime) {
 		yield return new WaitForSeconds(respawnTime);
 
