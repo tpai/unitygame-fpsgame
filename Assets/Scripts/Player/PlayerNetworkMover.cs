@@ -43,8 +43,7 @@ public class PlayerNetworkMover : PlayerBase {
 		Backpack.SerializeState (stream, info);
 		GunShooting.SerializeState (stream, info);
 		HPController.SerializeState (stream, info);
-		if (BulletFlying != null)
-			BulletFlying.SerializeState (stream, info);
+		BulletFlying.SerializeState (stream, info);
 	}
 
 	void SerializeState (PhotonStream stream, PhotonMessageInfo info) {

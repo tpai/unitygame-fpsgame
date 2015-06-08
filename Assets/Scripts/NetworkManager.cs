@@ -79,21 +79,20 @@ public class NetworkManager : MonoBehaviour {
 	}
 
 	void KillPlayer (string player, string killer) {
-		photonView.RPC ("KillPlayer_RPC", PhotonTargets.All, player, killer);
+
+		// dead punishment
+		panelCamera.enabled = true;
+		panelAudioListener.enabled = true;
+		StartCoroutine ("SpawnPlayer", 3f);
+		AddDeathCount ();
+		AddMessage_RPC ("You've been killed by " + killer+"!");
+
+		photonView.RPC ("KillPlayer_RPC", PhotonTargets.Others, player, killer);
 	}
 
 	[RPC]
 	void KillPlayer_RPC (string player, string killer) {
-		if (PhotonNetwork.player.name == player) {
-			panelCamera.enabled = true;
-			panelAudioListener.enabled = true;
-			StartCoroutine ("SpawnPlayer", 3f);
-			AddDeathCount ();
-			AddMessage_RPC ("You've been killed by " + killer+"!");
-
-//			PhotonNetwork.player.SetTeam (PunTeams.Team.red)
-		}
-		else if (PhotonNetwork.player.name == killer) {
+		if (PhotonNetwork.player.name == killer) {
 			AddKillCount ();
 			AddMessage_RPC ("You killed " + player+"!");
 		}
