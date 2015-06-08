@@ -25,6 +25,7 @@ public class HPController : PlayerBase {
 	void FixedUpdate () {
 		if (nowHP <= 0)
 			return ;
+
 		if (!PhotonView.isMine) {
 			hpSlider.value = m_NetworkedNowHP;
 			hpText.text = "";
@@ -37,7 +38,11 @@ public class HPController : PlayerBase {
 
 	public virtual void AddHP (int amt, string killer) {
 		
-		if (isDead)return ;
+		if (isDead)
+			return ;
+
+		if (!PhotonView.isMine)
+			return;
 		
 		nowHP += amt;
 
@@ -52,7 +57,8 @@ public class HPController : PlayerBase {
 				PlayerKilledBy (PhotonView.owner.name, killer);
 			}
 
-			PhotonNetwork.Destroy(gameObject);
+			if (PhotonNetwork.isMasterClient)
+				PhotonNetwork.Destroy(gameObject);
 			Destroy (gameObject);
 		}
 	}
