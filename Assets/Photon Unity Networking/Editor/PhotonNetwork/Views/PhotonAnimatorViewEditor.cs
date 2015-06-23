@@ -56,7 +56,7 @@ public class PhotonAnimatorViewEditor : Editor
 
     private int GetLayerCount()
     {
-#if UNITY_5_0 || UNITY_5
+#if UNITY_5_0
         return (this.m_Controller == null) ? 0 : this.m_Controller.layers.Length;
 #else
         return this.m_Animator.layerCount;
